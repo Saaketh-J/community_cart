@@ -39,32 +39,66 @@ class ScheduleState extends State<Schedule> {
                 formatButtonShowsNext: false,
               ),
               startingDayOfWeek: StartingDayOfWeek.monday,
-              onDaySelected: (date, events){
+              onDaySelected: (date, events) {
                 nextPage(context, date.month, date.day);
               },
               calendarController: controller,
             ),
+            Container(padding: EdgeInsets.only(bottom: 20.0)),
+            Align(
+              alignment: Alignment.centerLeft,
+            child: SingleChildScrollView(
+                child: DataTable(
+              columns: [
+                DataColumn(label: Text("Name", style: TextStyle(fontSize: 15))),
+                DataColumn(label: Text("Date", style: TextStyle(fontSize: 15))),
+              ],
+              rows: [
+                DataRow(
+                    cells: [DataCell(Text("Daniel", style: TextStyle(fontSize: 15))), DataCell(Text("4/7", style: TextStyle(fontSize: 15)))]),
+                DataRow(
+                    cells: [DataCell(Text("Lewis", style: TextStyle(fontSize: 15))), DataCell(Text("4/14", style: TextStyle(fontSize: 15)))]),
+                DataRow(cells: [
+                  DataCell(Text("Sebastian", style: TextStyle(fontSize: 15))),
+                  DataCell(Text("4/21", style: TextStyle(fontSize: 15)))
+                ]),
+              ],
+            )))
           ],
         )));
   }
 }
 
-class popUp extends StatelessWidget{
+class popUp extends StatelessWidget {
   var day;
   var month;
+
   popUp(this.month, this.day);
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Container(
-      width: 50,
-      height:50,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: Colors.blue,
+    return new AlertDialog(
+      backgroundColor: Color.fromRGBO(240, 153, 18, 1.0),
+      title: Text("Do you want to pick up the groceries on $month/$day?",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: Color.fromRGBO(58, 66, 86, 1.0),
+              decoration: TextDecoration.none)),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
       ),
-      child: Text("Do you want to pick up the groceries on $month/$day?", textAlign: TextAlign.center,style: TextStyle(color: Colors.white, decoration: TextDecoration.none)),
-
+      actions: [
+        FlatButton(
+          onPressed: () {},
+          child: Text("Yes", style: TextStyle(color: Colors.white)),
+        ),
+        FlatButton(
+          onPressed: () {},
+          child: Text("No", style: TextStyle(color: Colors.white)),
+        )
+      ],
     );
   }
 }
@@ -81,6 +115,3 @@ void nextPage(BuildContext context, month, day) {
         return popUp(month, day);
       });
 }
-
-
-
