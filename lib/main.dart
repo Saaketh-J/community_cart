@@ -1,5 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:community_cart/AppScreens/auth/loginPage.dart';
+import 'package:community_cart/AppScreens/auth/signUpPage.dart';
 
 import 'AppScreens/mapView.dart';
 
@@ -11,7 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: MyHomePage(title: 'CommunityCart'),
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => LoginPage(),
+        '/signup': (context) => SignUpPage(),
+        '/home': (context) => MyHomePage(),
+      },
     );
   }
 }
