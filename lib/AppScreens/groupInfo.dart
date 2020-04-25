@@ -1,3 +1,4 @@
+import 'package:community_cart/AppScreens/pickupSchedule.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -30,7 +31,7 @@ class GroupInfoPage extends StatelessWidget {
         Container(
           padding: EdgeInsets.only(top: 30.0),
         ),
-        textBoxes('Schedule', GroupInfoPage(), context, 55.0),
+        textBoxes('Schedule', Schedule(), context, 55.0),
         Container(
           padding: EdgeInsets.only(top: 30.0),
         ),
