@@ -11,19 +11,25 @@ class LoginPage extends StatelessWidget {
         body: Container(
       child: Column(
         children: <Widget>[
-          Text("Email"),
           TextField(
             controller: emailController,
+            decoration:
+                InputDecoration(labelText: "Email", alignLabelWithHint: true),
           ),
           Padding(
             padding: EdgeInsets.only(top: 10),
           ),
-          Text("Password"),
           TextField(
             controller: passwordController,
+            obscureText: true,
+            decoration: InputDecoration(
+                labelText: "Password", alignLabelWithHint: true),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 20),
           ),
           RaisedButton(
-              child: Text("Log in"),
+              child: Text("Log In"),
               onPressed: () {
                 var name = emailController.text;
                 var pw = passwordController.text;
@@ -41,7 +47,7 @@ class LoginPage extends StatelessWidget {
           ),
           Text("Don't have an account sign up here"),
           FlatButton(
-            child: Text("Sign up"),
+            child: Text("Sign Up"),
             onPressed: () {
               Navigator.pushNamed(context, "/signup");
             },

@@ -15,13 +15,18 @@ class SignUpPage extends StatelessWidget {
           ),
           TextField(
               decoration: InputDecoration(
-                  alignLabelWithHint: true, labelText: "Adress")),
+                  labelText: "Adress", alignLabelWithHint: true)),
           TextField(
               decoration: InputDecoration(
-                  alignLabelWithHint: true, labelText: "Email")),
+                  labelText: "Email", alignLabelWithHint: true)),
+          TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+                labelText: "Password", alignLabelWithHint: true),
+          ),
           TextField(
               decoration: InputDecoration(
-                  alignLabelWithHint: true, labelText: "Phone")),
+                  labelText: "Phone", alignLabelWithHint: true)),
           Padding(padding: EdgeInsets.only(top: 10)),
           Row(
             children: <Widget>[
