@@ -1,6 +1,7 @@
+import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/material.dart';
 import 'package:community_cart/AppScreens/auth/loginPage.dart';
 import 'package:community_cart/AppScreens/auth/signUpPage.dart';
-import 'package:flutter/material.dart';
 
 import 'AppScreens/mapView.dart';
 
@@ -54,6 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
               elevation: 6.0,
               onPressed: () {
                 nextPage(context);
+                FirebaseDatabase().reference().child("written").set(true);
               },
             ))
       ],
