@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>832278711333-120l5hmqndhu8q7bboejeq1gckeb65nh.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.832278711333-120l5hmqndhu8q7bboejeq1gckeb65nh</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBlSWAA8Zq3gaaYxfBYJ6WCLNZTWDd_kTQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>832278711333</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.communitycart</string>
+	<key>PROJECT_ID</key>
+	<string>community-cart</string>
+	<key>STORAGE_BUCKET</key>
+	<string>community-cart.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:832278711333:ios:399f1311c200b38a6283cc</string>
+	<key>DATABASE_URL</key>
+	<string>https://community-cart.firebaseio.com</string>
+</dict>
+</plist>

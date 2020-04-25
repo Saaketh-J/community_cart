@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "832278711333",
+    "firebase_url": "https://community-cart.firebaseio.com",
+    "project_id": "community-cart",
+    "storage_bucket": "community-cart.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832278711333:android:1b7f331b25338ed56283cc",
+        "android_client_info": {
+          "package_name": "come.communitycart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832278711333-5rjq1mkfuhl5b48uajfchracbo6ud67v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSkLnWeyBDpcfRuIAkAF5z3EskOlkiY_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "832278711333-5rjq1mkfuhl5b48uajfchracbo6ud67v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "832278711333-120l5hmqndhu8q7bboejeq1gckeb65nh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.communitycart"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
