@@ -25,7 +25,12 @@ class MyApp extends StatelessWidget {
         '/chats': (context) => ChatsPage(),
         '/message': (context) => MessagePage(),
         '/profile': (context) => ProfilePage(),
+<<<<<<< HEAD
         '/map': (context) => mainBase(),
+=======
+        '/map': (context) => MapView(),
+        '/chat': (context) => GroupInfoPage(),
+>>>>>>> parent of e861349... change Explore connection
       },
     );
   }
