@@ -1,11 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
-  TextEditingController nameController = TextEditingController(text: "Ana");
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  TextEditingController nameController = TextEditingController(text: "Danny");
   TextEditingController emailController =
-      TextEditingController(text: "Ana@gmail.com");
+      TextEditingController(text: "Danny@gmail.com");
   TextEditingController passwordController =
       TextEditingController(text: "password");
   TextEditingController phoneController = TextEditingController(text: '1234');
@@ -20,30 +23,79 @@ class SignUpPage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text("Create Account"),
+              Padding(
+                padding: EdgeInsets.only(top: 30),
+              ),
               TextField(
-                controller: nameController,
-                decoration: InputDecoration(
-                    alignLabelWithHint: true, labelText: "Name"),
+                  controller: nameController,
+                  decoration: InputDecoration(
+                    hintText: 'Enter Email',
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0xffED820E), width: 0.0),
+                    ),
+                  )),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
               ),
               TextField(
                   controller: emailController,
                   decoration: InputDecoration(
-                      labelText: "Email", alignLabelWithHint: true)),
+                    hintText: 'Enter Email',
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0xffED820E), width: 0.0),
+                    ),
+                  )),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+              ),
               TextField(
                 controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
-                    labelText: "Password", alignLabelWithHint: true),
+                  hintText: 'Enter Email',
+                  filled: true,
+                  fillColor: Colors.white,
+                  enabledBorder: const OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: Color(0xffED820E), width: 0.0),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
               ),
               TextFormField(
                   controller: phoneController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                      labelText: "Phone", alignLabelWithHint: true)),
+                    hintText: 'Enter Email',
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0xffED820E), width: 0.0),
+                    ),
+                  )),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+              ),
               TextField(
                   controller: addressController,
                   decoration: InputDecoration(
-                      labelText: "Address", alignLabelWithHint: true)),
+                    hintText: 'Enter Email',
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0xffED820E), width: 0.0),
+                    ),
+                  )),
               Padding(padding: EdgeInsets.only(top: 10)),
               Row(
                 children: <Widget>[
@@ -81,29 +133,36 @@ class SignUpPage extends StatelessWidget {
               ),
               RaisedButton(
                 child: Text("Sign Up"),
-                onPressed: () {
+                onPressed: () async {
                   var email = emailController.text;
+                  var password = passwordController.text;
 
-                  var user = {
+                  final FirebaseUser newUser =
+                      (await _auth.createUserWithEmailAndPassword(
+                              email: email, password: password))
+                          .user;
+
+                  var uid = newUser.uid;
+                  var userObject = {
+                    'id': uid,
                     'name': nameController.text,
                     'email': email,
-                    'password': passwordController.text,
+                    'password': password,
                     'phone': phoneController.text,
                     'address': addressController.text
                   };
                   var newUserRef = FirebaseDatabase.instance
                       .reference()
                       .child("users")
-                      .push();
-                  newUserRef.set(user);
-
+                      .child(uid);
+                  newUserRef.set(userObject);
                   Navigator.pushNamed(context, '/home');
                 },
               )
             ],
             mainAxisAlignment: MainAxisAlignment.center,
           ),
-          margin: const EdgeInsets.all(50),
+          margin: const EdgeInsets.all(40),
         ));
   }
 }

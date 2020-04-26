@@ -1,3 +1,4 @@
+import 'package:community_cart/AppScreens/chat/chatsPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -9,7 +10,7 @@ class MainGroupPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      backgroundColor: Color.fromRGBO(240,153,18, 1.0),
+      backgroundColor: Color.fromRGBO(240, 153, 18, 1.0),
       appBar: AppBar(
           title: Text("Groups"),
           backgroundColor: Color.fromRGBO(58, 66, 86, 1.0)),
@@ -59,7 +60,9 @@ class MainGroupPage extends StatelessWidget {
               ),
               IconButton(
                 icon: Icon(Icons.chat, color: Colors.white),
-                onPressed: () {},
+                onPressed: () {
+                  nextPage(context, ChatsPage());
+                },
               ),
               IconButton(
                 icon: Icon(Icons.group, color: Colors.white),
@@ -92,7 +95,7 @@ void nextPage(BuildContext context, page) {
       });
 }
 
-Widget textBoxes(title, page, context){
+Widget textBoxes(title, page, context) {
   return Container(
     child: FlatButton(
       child: Text(title,
