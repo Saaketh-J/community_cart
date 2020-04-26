@@ -1,4 +1,5 @@
 import 'package:community_cart/firebaseObjects/userMessage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:math';
@@ -17,7 +18,9 @@ ScrollController _messageAreaController = ScrollController();
 // This is the screen that displays the list of messages
 class MessagePage extends StatelessWidget {
   final String chatName;
-  MessagePage({this.chatName});
+  MessagePage({this.chatName}) {
+    contactName = chatName;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -203,7 +206,6 @@ class _NewMessageInputState extends State<NewMessageInput> {
   }
 
   postMessageToDB(UserMessage msg) async {
-    print("HELLLLLLLLOOO");
     // final dbref = FirebaseDatabase().reference().child("messages");
     // dbref.child(contactName).child(msg.getId).set(msg.toJson());
 

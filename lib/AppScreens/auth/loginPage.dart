@@ -41,10 +41,12 @@ class LoginPage extends StatelessWidget {
                     var email = emailController.text;
                     var password = passwordController.text;
 
-                    _auth.signInWithEmailAndPassword(
-                        email: email, password: password).then((onValue) {
-                          Navigator.pushNamed(context, '/home');
-                        });
+                    _auth
+                        .signInWithEmailAndPassword(
+                            email: email, password: password)
+                        .then((onValue) {
+                      Navigator.pushNamed(context, '/home');
+                    });
                   }),
               Padding(
                 padding: EdgeInsets.all(40),
