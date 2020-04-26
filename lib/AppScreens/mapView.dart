@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:community_cart/AppScreens/profilePage.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -93,9 +92,9 @@ class mainBase extends StatelessWidget {
               decoration: BoxDecoration(color: Color(0xff000080)),
               child: Center(
                   child: SpinKitPouringHourglass(
-                color: Colors.white,
-                size: 80.0,
-              )),
+                    color: Colors.white,
+                    size: 80.0,
+                  )),
             );
           }
         });
@@ -105,10 +104,10 @@ class mainBase extends StatelessWidget {
 Future<Widget> waiting() =>
     // Imagine that this function is
 // more complex and slow.
-    Future.delayed(
-      Duration(seconds: 7),
+Future.delayed(
+  Duration(seconds: 7),
       () => fake(),
-    );
+);
 
 class fake extends StatelessWidget {
   @override
@@ -117,6 +116,7 @@ class fake extends StatelessWidget {
     return Container(width: 0.0, height: 0.0);
   }
 }
+
 
 class MapViewState extends State<MapView> {
   Completer<GoogleMapController> _controller = Completer();
@@ -170,30 +170,9 @@ class MapViewState extends State<MapView> {
             _controller.complete(controller);
           },
         ),
-        Align(
-            alignment: Alignment.bottomRight,
-            child: Row(children: <Widget>[
-              FloatingActionButton(
-                onPressed: () => profilePage(context),
-                child: Icon(Icons.map),
-              ),
-            ]))
       ]),
     );
   }
-}
-
-void profilePage(BuildContext context) {
-  showGeneralDialog(
-      context: context,
-      barrierDismissible: true,
-      barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
-      barrierColor: Colors.black45,
-      transitionDuration: const Duration(milliseconds: 200),
-      pageBuilder: (BuildContext buildContext, Animation animation,
-          Animation secondaryAnimation) {
-        return ProfilePage();
-      });
 }
 
 void nextPage(BuildContext context, page) {
