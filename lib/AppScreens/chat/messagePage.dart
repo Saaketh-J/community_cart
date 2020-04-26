@@ -116,7 +116,7 @@ class _MessagesAreaState extends State<MessagesArea> {
   }
 
   Widget _renderMessage(UserMessage msg) {
-    bool left = msg.getAuthor[0] != 'P';
+    bool left = msg.getAuthor == contactName;
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10.0),
@@ -268,17 +268,31 @@ class _NewMessageInputState extends State<NewMessageInput> {
               Icons.send,
               color: Colors.white,
             ),
-            onPressed: () {
+            onPressed: () async {
               var timeNow = DateTime.now();
               String time = DateFormat('jm').format(timeNow);
 
-              var name = switchstate ? 'Peter Pan' : 'Wendy Darling';
+              await FirebaseAuth.instance.currentUser().then((user) {
+                var currentUserRef = FirebaseDatabase.instance
+                    .reference()
+                    .child('users')
+                    .child(user.uid);
+                currentUserRef.once().then((DataSnapshot snapshot) {
+                  // Map<dynamic, dynamic> values = snapshot.value;
+                  // values.forEach((key, values) {
+                  //   print(values["name"]);
+                  // });
 
-              String uuid = DateTime.now().millisecondsSinceEpoch.toString() +
-                  rdm.nextInt(999999).toString();
-              UserMessage newMessage = UserMessage(
-                  uuid, 'text', time, name, _textController.text.trim());
-              postMessageToDB(newMessage);
+                  var name = switchstate ? snapshot.value['name'] : contactName;
+
+                  String uuid =
+                      DateTime.now().millisecondsSinceEpoch.toString() +
+                          rdm.nextInt(999999).toString();
+                  UserMessage newMessage = UserMessage(
+                      uuid, 'text', time, name, _textController.text.trim());
+                  postMessageToDB(newMessage);
+                });
+              });
             },
           ),
         ),
