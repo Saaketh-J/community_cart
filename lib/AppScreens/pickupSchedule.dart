@@ -20,6 +20,7 @@ class ScheduleState extends State<Schedule> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color.fromRGBO(3,168,147,1.0),
         appBar: AppBar(
             title: Text('Schedule'),
             backgroundColor: Color.fromRGBO(58, 66, 86, 1.0)),
@@ -48,6 +49,14 @@ class ScheduleState extends State<Schedule> {
             Align(
               alignment: Alignment.centerLeft,
             child: SingleChildScrollView(
+              child:Container(
+                margin: EdgeInsets.only(left:10.0),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 2,
+                  )
+                ),
                 child: DataTable(
               columns: [
                 DataColumn(label: Text("Name", style: TextStyle(fontSize: 15))),
@@ -63,7 +72,7 @@ class ScheduleState extends State<Schedule> {
                   DataCell(Text("4/21", style: TextStyle(fontSize: 15)))
                 ]),
               ],
-            )))
+            ))))
           ],
         )));
   }

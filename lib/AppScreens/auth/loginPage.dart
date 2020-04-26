@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:community_cart/globals.dart' as globals;
 
 class LoginPage extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -74,6 +75,8 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
           ),
           margin: const EdgeInsets.all(50),
-        ));
+
+        ),
+    );
   }
 }

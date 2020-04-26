@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
+import 'groceryList.dart';
 import 'groupInfo.dart';
 import 'groupMain.dart';
 
@@ -35,7 +36,7 @@ class GroupInfoPage extends StatelessWidget {
         Container(
           padding: EdgeInsets.only(top: 30.0),
         ),
-        textBoxes('Grocery List', GroupInfoPage(), context, 50.0),
+        textBoxes('Grocery List', GroceryList(), context, 50.0),
         Container(
           padding: EdgeInsets.only(top: 30.0),
         ),

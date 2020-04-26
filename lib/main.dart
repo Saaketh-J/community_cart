@@ -1,5 +1,7 @@
 import 'package:community_cart/AppScreens/chat/chatsPage.dart';
 import 'package:community_cart/AppScreens/chat/messagePage.dart';
+import 'package:community_cart/AppScreens/groupInfo.dart';
+import 'package:community_cart/AppScreens/profilePage.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:community_cart/AppScreens/auth/loginPage.dart';
@@ -22,6 +24,8 @@ class MyApp extends StatelessWidget {
         '/home': (context) => MyHomePage(),
         '/chats': (context) => ChatsPage(),
         '/message': (context) => MessagePage(),
+        '/profile': (context) => ProfilePage(),
+        '/map': (context) => mainBase(),
       },
     );
   }
@@ -37,33 +41,60 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int navBarIndex = 0;
+
+  void selectPage(int index)
+  {
+    setState(() {
+      if(index == 0)
+      {
+          Navigator.pushNamed(context, "/map");
+      }
+      else if (index == 2)
+      {
+        Navigator.pushNamed(context, "/profile");
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        body: Container(
-            child: Column(
-      children: <Widget>[
-        Container(
-            margin: EdgeInsets.only(top: 450, left: 85),
-            color: Colors.blueAccent,
-            //height: 50.0,
-            child: RaisedButton(
-              color: Colors.deepOrangeAccent,
-              child: Text('Find Users',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: 40,
-                    color: Color(0xff000080),
-                  )),
-              elevation: 6.0,
-              onPressed: () {
-                nextPage(context);
-                FirebaseDatabase().reference().child("written").set(true);
-              },
-            ))
-      ],
-    )));
+      bottomNavigationBar: new BottomNavigationBar(
+        currentIndex: navBarIndex,
+        onTap: (int index)
+        {
+          setState(() {
+            navBarIndex = index;
+            selectPage(index);
+          });
+        },
+        items: [
+          new BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage("images/fb_icon.png"),
+                size: 0,
+              ),
+              title: Text('Explore'),
+          ),
+          new BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage("images/fb_icon.png"),
+              size: 0,
+            ),
+            title: Text('Chat'),
+          ),
+          new BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage("images/fb_icon.png"),
+              size: 0,
+            ),
+            title: Text('Profile'),
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -76,6 +107,6 @@ void nextPage(BuildContext context) {
       transitionDuration: const Duration(milliseconds: 200),
       pageBuilder: (BuildContext buildContext, Animation animation,
           Animation secondaryAnimation) {
-        return MapView();
+        return mainBase();
       });
 }
