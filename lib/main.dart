@@ -92,6 +92,6 @@ void nextPage(BuildContext context) {
       transitionDuration: const Duration(milliseconds: 200),
       pageBuilder: (BuildContext buildContext, Animation animation,
           Animation secondaryAnimation) {
-        return MapView();
+        return mainBase();
       });
 }
