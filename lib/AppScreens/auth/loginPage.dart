@@ -66,6 +66,8 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
           ),
           margin: const EdgeInsets.all(50),
-        ));
+
+        ),
+    );
   }
 }
