@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => SignUpPage(),
         '/home': (context) => MyHomePage(),
         '/profile': (context) => ProfilePage(),
+        '/map': (context) => MapView(),
       },
     );
   }
@@ -35,6 +36,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int navBarIndex = 0;
+
+  void selectPage(int index)
+  {
+    setState(() {
+      if(index == 0)
+      {
+          Navigator.pushNamed(context, "/map");
+      }
+      else if (index == 1)
+      {
+          Navigator.pushNamed(context, "/profile");
+      }
+      else if (index == 2)
+      {
+        Navigator.pushNamed(context, "/profile");
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -79,6 +100,41 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                 ),
     ),
+
+
+      bottomNavigationBar: new BottomNavigationBar(
+        currentIndex: navBarIndex,
+        onTap: (int index)
+        {
+          setState(() {
+            navBarIndex = index;
+            selectPage(index);
+          });
+        },
+        items: [
+          new BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage("images/fb_icon.png"),
+                size: 0,
+              ),
+              title: Text('Explore'),
+          ),
+          new BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage("images/fb_icon.png"),
+              size: 0,
+            ),
+            title: Text('Chat'),
+          ),
+          new BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage("images/fb_icon.png"),
+              size: 0,
+            ),
+            title: Text('Profile'),
+          ),
+        ],
+      ),
     );
   }
 }
