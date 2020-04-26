@@ -2,6 +2,7 @@
 
 ## About
 The purpose of CommunityCart is to bring the community together by connecting users who live in the same area to collaborate on groceries pick-ups. During the Covid-19 pandamic, it is important that we isolate as much as possible and avoid crowding essential businesses. CommunityCart provides the community with the opportunity to help each other pick-up groceries and drop-off at their residences. 
+
 Technologies used: FireBase, Flutter
 
 ## Features
