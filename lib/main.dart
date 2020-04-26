@@ -1,3 +1,4 @@
+import 'package:community_cart/AppScreens/auth/profilePage.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:community_cart/AppScreens/auth/loginPage.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignUpPage(),
         '/home': (context) => MyHomePage(),
+        '/profile': (context) => ProfilePage(),
       },
     );
   }
@@ -39,27 +41,43 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         body: Container(
             child: Column(
-      children: <Widget>[
-        Container(
-            margin: EdgeInsets.only(top: 450, left: 85),
-            color: Colors.blueAccent,
-            //height: 50.0,
-            child: RaisedButton(
-              color: Colors.deepOrangeAccent,
-              child: Text('Find Users',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: 40,
-                    color: Color(0xff000080),
-                  )),
-              elevation: 6.0,
-              onPressed: () {
-                nextPage(context);
-                FirebaseDatabase().reference().child("written").set(true);
-              },
-            ))
-      ],
-    )));
+              children: <Widget>[
+                Container(
+                    margin: EdgeInsets.only(top: 450, left: 85),
+                    color: Colors.blueAccent,
+                    //height: 50.0,
+                    child: RaisedButton(
+                      color: Colors.deepOrangeAccent,
+                      child: Text('Find Users',
+                          style: TextStyle(
+                            fontFamily: 'Roboto',
+                            fontSize: 40,
+                            color: Color(0xff000080),
+                          )),
+                      elevation: 6.0,
+                      onPressed: () {
+                        nextPage(context);
+                        FirebaseDatabase().reference().child("written").set(true);
+                      },
+                    ),),
+                Padding(padding: EdgeInsets.only(top: 10)),
+                RaisedButton(
+                      color: Colors.deepOrangeAccent,
+                      child: Text('Profile',
+                      style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 40,
+                      color: Color(0xff000080),
+                      )),
+                      elevation: 6.0,
+                      onPressed: (){
+                        Navigator.pushNamed(context, "/profile");
+                      },
+                ),
+                      ],
+                ),
+    ),
+    );
   }
 }
 
