@@ -1,11 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
-  TextEditingController nameController = TextEditingController(text: "Ana");
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  TextEditingController nameController = TextEditingController(text: "Danny");
   TextEditingController emailController =
-      TextEditingController(text: "Ana@gmail.com");
+      TextEditingController(text: "Danny@gmail.com");
   TextEditingController passwordController =
       TextEditingController(text: "password");
   TextEditingController phoneController = TextEditingController(text: '1234');
@@ -81,22 +84,29 @@ class SignUpPage extends StatelessWidget {
               ),
               RaisedButton(
                 child: Text("Sign Up"),
-                onPressed: () {
+                onPressed: () async {
                   var email = emailController.text;
+                  var password = passwordController.text;
 
-                  var user = {
+                  final FirebaseUser newUser =
+                      (await _auth.createUserWithEmailAndPassword(
+                              email: email, password: password))
+                          .user;
+
+                  var uid = newUser.uid;
+                  var userObject = {
+                    'id': uid,
                     'name': nameController.text,
                     'email': email,
-                    'password': passwordController.text,
+                    'password': password,
                     'phone': phoneController.text,
                     'address': addressController.text
                   };
                   var newUserRef = FirebaseDatabase.instance
                       .reference()
                       .child("users")
-                      .push();
-                  newUserRef.set(user);
-
+                      .child(uid);
+                  newUserRef.set(userObject);
                   Navigator.pushNamed(context, '/home');
                 },
               )

@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   TextEditingController emailController =
       TextEditingController(text: 'Ana@gmail.com');
   TextEditingController passwordController =
@@ -38,17 +41,10 @@ class LoginPage extends StatelessWidget {
                     var email = emailController.text;
                     var password = passwordController.text;
 
-                    var usersRef =
-                        FirebaseDatabase.instance.reference().child("users");
-                    usersRef.once().then((DataSnapshot snapshot) {
-                      Map<dynamic, dynamic> values = snapshot.value;
-                      values.forEach((key, value) {
-                        if (email == value['email'] &&
-                            password == value['password']) {
-                          Navigator.pushNamed(context, "/home");
-                        }
-                      });
-                    });
+                    _auth.signInWithEmailAndPassword(
+                        email: email, password: password).then((onValue) {
+                          Navigator.pushNamed(context, '/home');
+                        });
                   }),
               Padding(
                 padding: EdgeInsets.all(40),
