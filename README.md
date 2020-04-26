@@ -22,3 +22,6 @@ We want to create strong, honest communities. Rating and report help us identify
 
 ### Group:
 Each group has its own calendar that users can use to schedule a time that allows someone from the group to pick up from a store. Each group also has a grocery list that users can add to and make changes up to the pick up date.
+
+## App demo
+<img src="https://media.giphy.com/media/IgdoKY2ZdgtNgR2rAt/giphy.gif">
