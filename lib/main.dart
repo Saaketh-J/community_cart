@@ -1,3 +1,5 @@
+import 'package:community_cart/AppScreens/chat/chatsPage.dart';
+import 'package:community_cart/AppScreens/chat/messagePage.dart';
 import 'package:community_cart/AppScreens/groupInfo.dart';
 import 'package:community_cart/AppScreens/profilePage.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -20,9 +22,10 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignUpPage(),
         '/home': (context) => MyHomePage(),
+        '/chats': (context) => ChatsPage(),
+        '/message': (context) => MessagePage(),
         '/profile': (context) => ProfilePage(),
         '/map': (context) => mainBase(),
-        '/chat': (context) => GroupInfoPage(),
       },
     );
   }

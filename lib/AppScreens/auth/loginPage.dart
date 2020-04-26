@@ -1,9 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:community_cart/globals.dart' as globals;
 
 class LoginPage extends StatelessWidget {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   TextEditingController emailController =
       TextEditingController(text: 'Ana@gmail.com');
   TextEditingController passwordController =
@@ -17,19 +20,31 @@ class LoginPage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               TextField(
-                controller: emailController,
-                decoration: InputDecoration(
-                    labelText: "Email", alignLabelWithHint: true),
-              ),
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    hintText: 'Enter Email',
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0xffED820E), width: 0.0),
+                    ),
+                  )),
               Padding(
                 padding: EdgeInsets.only(top: 10),
               ),
               TextField(
-                controller: passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                    labelText: "Password", alignLabelWithHint: true),
-              ),
+                  controller: passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: 'Enter Password',
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0xffED820E), width: 0.0),
+                    ),
+                  )),
               Padding(
                 padding: EdgeInsets.only(top: 20),
               ),
@@ -39,17 +54,11 @@ class LoginPage extends StatelessWidget {
                     var email = emailController.text;
                     var password = passwordController.text;
 
-                    var usersRef =
-                        FirebaseDatabase.instance.reference().child("users");
-                    usersRef.once().then((DataSnapshot snapshot) {
-                      Map<dynamic, dynamic> values = snapshot.value;
-                      values.forEach((key, value) {
-                        if (email == value['email'] &&
-                            password == value['password']) {
-                          globals.userName = email;
-                          Navigator.pushNamed(context, "/home");
-                        }
-                      });
+                    _auth
+                        .signInWithEmailAndPassword(
+                            email: email, password: password)
+                        .then((onValue) {
+                      Navigator.pushNamed(context, '/home');
                     });
                   }),
               Padding(
