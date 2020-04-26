@@ -10,11 +10,7 @@ class ProfilePage extends StatelessWidget {
     static var phone = '';
     static var address = '';
 
-  TextEditingController nameController;
-  TextEditingController emailController;
-  TextEditingController passwordController;
-  TextEditingController phoneController;
-  TextEditingController addressController;
+
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +27,13 @@ class ProfilePage extends StatelessWidget {
       });
     });
 
-    nameController = TextEditingController(text: name);
-    emailController = TextEditingController(text: email);
-    passwordController = TextEditingController(text: password);
-    phoneController = TextEditingController(text: phone);
-    addressController = TextEditingController(text: address);
+    //sleep(const Duration(seconds: 5));
+
+    TextEditingController nameController = TextEditingController(text: name);
+    TextEditingController emailController = TextEditingController(text: email);
+    TextEditingController passwordController = TextEditingController(text: password);
+    TextEditingController phoneController = TextEditingController(text: phone);
+    TextEditingController addressController = TextEditingController(text: address);
 
     return Scaffold(
         resizeToAvoidBottomPadding: false,

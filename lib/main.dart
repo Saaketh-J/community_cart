@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               children: <Widget>[
                 Container(
-                    margin: EdgeInsets.only(top: 450, left: 85),
+                    margin: EdgeInsets.only(top: 300, left: 90),
                     color: Colors.blueAccent,
                     //height: 50.0,
                     child: RaisedButton(
@@ -60,8 +60,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         FirebaseDatabase().reference().child("written").set(true);
                       },
                     ),),
-                Padding(padding: EdgeInsets.only(top: 10)),
-                RaisedButton(
+                Padding(padding: EdgeInsets.only(top: 20)),
+                Padding(
+                  padding: const EdgeInsets.only(left: 90),
+                  child: new RaisedButton(
                       color: Colors.deepOrangeAccent,
                       child: Text('Profile',
                       style: TextStyle(
@@ -73,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: (){
                         Navigator.pushNamed(context, "/profile");
                       },
-                ),
+                ),)
                       ],
                 ),
     ),
