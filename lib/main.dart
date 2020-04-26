@@ -27,8 +27,11 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => ProfilePage(),
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         '/map': (context) => mainBase(),
 =======
+=======
+>>>>>>> parent of e861349... change Explore connection
 =======
 >>>>>>> parent of e861349... change Explore connection
         '/map': (context) => MapView(),
