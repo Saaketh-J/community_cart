@@ -1,3 +1,5 @@
+import 'package:community_cart/AppScreens/chat/chatsPage.dart';
+import 'package:community_cart/AppScreens/chat/messagePage.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:community_cart/AppScreens/auth/loginPage.dart';
@@ -18,6 +20,8 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/signup': (context) => SignUpPage(),
         '/home': (context) => MyHomePage(),
+        '/chats': (context) => ChatsPage(),
+        '/message': (context) => MessagePage(),
       },
     );
   }
