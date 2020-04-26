@@ -19,19 +19,31 @@ class LoginPage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               TextField(
-                controller: emailController,
-                decoration: InputDecoration(
-                    labelText: "Email", alignLabelWithHint: true),
-              ),
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    hintText: 'Enter Email',
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0xffED820E), width: 0.0),
+                    ),
+                  )),
               Padding(
                 padding: EdgeInsets.only(top: 10),
               ),
               TextField(
-                controller: passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                    labelText: "Password", alignLabelWithHint: true),
-              ),
+                  controller: passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: 'Enter Password',
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0xffED820E), width: 0.0),
+                    ),
+                  )),
               Padding(
                 padding: EdgeInsets.only(top: 20),
               ),

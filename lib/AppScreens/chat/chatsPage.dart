@@ -1,4 +1,7 @@
 import 'package:community_cart/AppScreens/chat/messagePage.dart';
+import 'package:community_cart/firebaseObjects/userMessage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class ChatsPage extends StatelessWidget {
@@ -12,6 +15,32 @@ class ChatsPage extends StatelessWidget {
         appBar: AppBar(
           title: Text('Chat'),
           centerTitle: true,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () async {
+                var usersRef =
+                    FirebaseDatabase.instance.reference().child("users");
+                var conversationsRef = FirebaseDatabase.instance
+                    .reference()
+                    .child("conversations");
+                await FirebaseAuth.instance.currentUser().then((currentUser) {
+                  usersRef.once().then((DataSnapshot snapshot) {
+                    Map<dynamic, dynamic> values = snapshot.value;
+                    values.forEach((key, value) {
+                      if (currentUser.uid != value['id']) {
+                        print(value['name']);
+                        conversationsRef
+                            .child(currentUser.uid + "-" + value['id'])
+                            .set(UserMessage(
+                                "1012", 'text', null, 'system', 'message'));
+                      }
+                    });
+                  });
+                });
+              },
+            )
+          ],
         ),
         body: MessageList(),
       ),
@@ -23,23 +52,8 @@ class MessageList extends StatelessWidget {
   static final String time =
       DateTime.now().hour.toString() + ':' + DateTime.now().minute.toString();
   var messageList = [
-    ListItemMessageTile('Andrew Appleseed', 'Hey dude how are you', time),
-    ListItemMessageTile('Benny Blair', ' how are you', time),
     ListItemMessageTile(
-        'Claire Carthy', 'Hey dude howsdfjsjfksfjksajfsdf are you', time),
-    ListItemMessageTile('Deena Daniel', 'Hey dude how are you', time),
-    ListItemMessageTile('Eileen Enic', ' how are you', time),
-    ListItemMessageTile(
-        'Felix Fall', 'Hey dude howsdfjsjfksfjksajfsdf are you', time),
-    ListItemMessageTile('Andrew Appleseed', 'Hey dude how are you', time),
-    ListItemMessageTile('Benny Blair', ' how are you', time),
-    ListItemMessageTile(
-        'Claire Carthy', 'Hey dude howsdfjsjfksfjksajfsdf are you', time),
-    ListItemMessageTile('Deena Daniel', 'Hey dude how are you', time),
-    ListItemMessageTile('Eileen Enic', ' how are you', time),
-    ListItemMessageTile(
-        'Felix Fall', 'Hey dude howsdfjsjfksfjksajfsdf are you', time),
-    ListItemMessageTile('Andrew Appleseed', 'Hey dude how are you', time),
+        'Andrew Appleseed', 'Hey, doing groceries this week?', time),
     ListItemMessageTile('Benny Blair', ' how are you', time),
     ListItemMessageTile(
         'Claire Carthy', 'Hey dude howsdfjsjfksfjksajfsdf are you', time),

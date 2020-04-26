@@ -23,30 +23,79 @@ class SignUpPage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text("Create Account"),
+              Padding(
+                padding: EdgeInsets.only(top: 30),
+              ),
               TextField(
-                controller: nameController,
-                decoration: InputDecoration(
-                    alignLabelWithHint: true, labelText: "Name"),
+                  controller: nameController,
+                  decoration: InputDecoration(
+                    hintText: 'Enter Email',
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0xffED820E), width: 0.0),
+                    ),
+                  )),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
               ),
               TextField(
                   controller: emailController,
                   decoration: InputDecoration(
-                      labelText: "Email", alignLabelWithHint: true)),
+                    hintText: 'Enter Email',
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0xffED820E), width: 0.0),
+                    ),
+                  )),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+              ),
               TextField(
                 controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
-                    labelText: "Password", alignLabelWithHint: true),
+                  hintText: 'Enter Email',
+                  filled: true,
+                  fillColor: Colors.white,
+                  enabledBorder: const OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: Color(0xffED820E), width: 0.0),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
               ),
               TextFormField(
                   controller: phoneController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                      labelText: "Phone", alignLabelWithHint: true)),
+                    hintText: 'Enter Email',
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0xffED820E), width: 0.0),
+                    ),
+                  )),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+              ),
               TextField(
                   controller: addressController,
                   decoration: InputDecoration(
-                      labelText: "Address", alignLabelWithHint: true)),
+                    hintText: 'Enter Email',
+                    filled: true,
+                    fillColor: Colors.white,
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0xffED820E), width: 0.0),
+                    ),
+                  )),
               Padding(padding: EdgeInsets.only(top: 10)),
               Row(
                 children: <Widget>[
@@ -113,7 +162,7 @@ class SignUpPage extends StatelessWidget {
             ],
             mainAxisAlignment: MainAxisAlignment.center,
           ),
-          margin: const EdgeInsets.all(50),
+          margin: const EdgeInsets.all(40),
         ));
   }
 }

@@ -278,11 +278,6 @@ class _NewMessageInputState extends State<NewMessageInput> {
                     .child('users')
                     .child(user.uid);
                 currentUserRef.once().then((DataSnapshot snapshot) {
-                  // Map<dynamic, dynamic> values = snapshot.value;
-                  // values.forEach((key, values) {
-                  //   print(values["name"]);
-                  // });
-
                   var name = switchstate ? snapshot.value['name'] : contactName;
 
                   String uuid =
