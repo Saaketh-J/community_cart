@@ -1,7 +1,7 @@
 # CommunityCart
 
 ## About
-The purpose of CommunityCart is to bring the community together by connecting users who live in the same area to collaborate on groceries pick-ups. During the Covid-19 pandamic, it is important that we isolate as much as possible and avoid crowding essential businesses. CommunityCart provides the community with the opportunity to help each other pick-up groceries and drop-off at their residences. 
+The idea came to us when we realize small cities in the US don't have access to a lot of groceries delivery services. So we came up with CommunityCart. The purpose of CommunityCart is to bring the community together by connecting users who live in the same area to collaborate on groceries pick-ups. During the Covid-19 pandamic, it is important that we isolate as much as possible and avoid crowding essential businesses. CommunityCart provides the community with the opportunity to help each other pick-up groceries and drop-off at their residences. 
 
 How are we different from Uber, Postmates, InstaCart, and other food delivery services? We encourage the community to connect and help eachother on a vonlunteer basis. It's not about profit, it's about building a strong community.
 
