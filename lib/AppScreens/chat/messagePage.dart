@@ -8,7 +8,6 @@ import 'package:firebase_database/firebase_database.dart';
 // import 'package:image_picker/image_picker.dart';
 // import 'package:firebase_storage/firebase_storage.dart';
 
-final dbref = FirebaseDatabase.instance.reference().child('messages');
 // final storeageRef = FirebaseStorage.instance.ref().child('message');
 bool switchstate = false;
 String contactName;
@@ -83,6 +82,7 @@ class _MessagesAreaState extends State<MessagesArea> {
   @override
   void initState() {
     super.initState();
+    final dbref = FirebaseDatabase.instance.reference().child('messages');
 
     items = List();
     _onMessageAddedSubscription = dbref.onChildAdded.listen(_onMessageAdded);
@@ -203,9 +203,17 @@ class _NewMessageInputState extends State<NewMessageInput> {
   }
 
   postMessageToDB(UserMessage msg) async {
-    await dbref.child(contactName).child(msg.getId).set(msg.toJson());
-    _messageAreaController
-        .jumpTo(_messageAreaController.position.maxScrollExtent);
+    print("HELLLLLLLLOOO");
+    // final dbref = FirebaseDatabase().reference().child("messages");
+    // dbref.child(contactName).child(msg.getId).set(msg.toJson());
+
+    var messagesRef =
+        FirebaseDatabase.instance.reference().child("messages").push();
+    await messagesRef.set(msg.toJson()).then((onValue) {
+      _messageAreaController
+          .jumpTo(_messageAreaController.position.maxScrollExtent);
+    });
+    _textController.clear();
   }
 
   // Future saaveImageToDB() async {
@@ -269,7 +277,6 @@ class _NewMessageInputState extends State<NewMessageInput> {
               UserMessage newMessage = UserMessage(
                   uuid, 'text', time, name, _textController.text.trim());
               postMessageToDB(newMessage);
-              _textController.clear();
             },
           ),
         ),
