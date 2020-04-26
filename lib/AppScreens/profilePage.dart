@@ -5,12 +5,10 @@ import 'package:community_cart/globals.dart' as globals;
 
 class ProfilePage extends StatelessWidget {
     static var email = globals.userName;
-    static var name = '';
-    static var password = '';
-    static var phone = '';
-    static var address = '';
-
-
+    static var name;
+    static var password;
+    static var phone;
+    static var address;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +48,7 @@ class ProfilePage extends StatelessWidget {
         body: Container(
           child: Column(
             children: <Widget>[
-              Text("Profile"),
+              Text("Profile",style: TextStyle(fontSize: 30.0,fontWeight: FontWeight.bold)),
               TextField(
                 controller: nameController,
                 decoration: InputDecoration(
